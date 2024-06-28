@@ -1,0 +1,23 @@
+server:
+  port: 8089
+
+spider:
+  server:
+    ip: localhost
+    port: 8081
+  worker:
+    name: integral
+    rpc-port: 9646
+
+
+spring:
+  application:
+    application:
+      name: integral
+  dataSource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://39.106.62.142:3306/spider_demo
+    userName: spider_demo
+    password: spider_demo
+    maxActive: 20
+    initialSize:

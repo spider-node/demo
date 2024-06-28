@@ -1,0 +1,24 @@
+server:
+  port: 8083
+
+spider:
+  server:
+    ip: 172.16.169.66
+    port: 8081
+  worker:
+    name: pay
+    rpc-port: 9642
+
+
+spring:
+  application:
+    application:
+      name: pay
+  dataSource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://39.106.62.142:3306/spider_demo
+    userName: spider_demo
+    password: spider_demo
+    maxActive: 20
+    initialSize:
+

@@ -1,0 +1,23 @@
+server:
+  port: 8084
+
+spider:
+  server:
+    ip: 172.16.169.66
+    port: 8081
+  worker:
+    name: order
+    rpc-port: 9641
+
+
+spring:
+  application:
+    application:
+      name: order
+  dataSource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://39.106.62.142:3306/spider_demo
+    userName: spider_demo
+    password: spider_demo
+    maxActive: 20
+    initialSize:

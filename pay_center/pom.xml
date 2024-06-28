@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.spider.demo</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<groupId>com.spider.demo</groupId>
+	<artifactId>pay_center</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>pay_center</name>
+	<description>Demo project for Spring Boot</description>
+	
+	<properties>
+		<java.version>8</java.version>
+	</properties>
+	<dependencies>
+
+		<dependency>
+			<groupId>com.spider.demo</groupId>
+			<artifactId>pay.center.sdk</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- spider -->
+		<dependency>
+			<groupId>cn.spider-node</groupId>
+			<artifactId>client</artifactId>
+			<version>1.0.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-tx</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-oxm</artifactId>
+				</exclusion>
+				<exclusion>
+
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-aop</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-context-support</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>cn.spider-node</groupId>
+					<artifactId>spider-mybatis-plugin</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>cn.spider-node</groupId>
+					<artifactId>spider-transaction</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>com.google.api.grpc</groupId>
+					<artifactId>proto-google-common-protos</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>io.vertx</groupId>
+					<artifactId>vertx-hazelcast</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>com.hazelcast</groupId>
+					<artifactId>hazelcast</artifactId>
+
+				</exclusion>
+
+				<exclusion>
+					<groupId>com.hazelcast</groupId>
+					<artifactId>hazelcast-kubernetes</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>io.vertx</groupId>
+					<artifactId>vertx-web-client</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>io.vertx</groupId>
+					<artifactId>vertx-core</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>io.vertx</groupId>
+					<artifactId>vertx-codegen</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>io.vertx</groupId>
+					<artifactId>vertx-service-proxy</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>io.vertx</groupId>
+					<artifactId>vertx-grpc</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>io.vertx</groupId>
+					<artifactId>vertx-web</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>io.vertx</groupId>
+					<artifactId>vertx-bridge-common</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>io.vertx</groupId>
+					<artifactId>vertx-auth-common</artifactId>
+				</exclusion>
+
+				<exclusion>
+					<groupId>org.redisson</groupId>
+					<artifactId>redisson</artifactId>
+				</exclusion>
+
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-grpc</artifactId>
+			<version>4.3.7</version>
+
+		</dependency>
+
+
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-core</artifactId>
+			<version>4.3.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-web-client</artifactId>
+			<version>4.3.7</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.11</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>1.1.18</version>
+		</dependency>
+
+		<!-- mybatis-plus的依赖 -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>3.5.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+			<version>1.18.24</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
