@@ -24,6 +24,7 @@ public class IntegralServiceImpl implements IntegralService {
      */
     @Override
     public CalculateDeductionResult calculateDeduction(CalculateDeductionParam param) {
+        // 获取积分
         Integral integral = iIntegralService.lambdaQuery().eq(Integral::getUser,param.getUser()).last("limit 1").one();
         if(Objects.isNull(integral)){
             integral = Integral.builder()
@@ -35,8 +36,10 @@ public class IntegralServiceImpl implements IntegralService {
                     .build();
         }
         BigDecimal sumIntegral = integral.getIntegralNum().subtract(integral.getLockNumber());
+        // 计算积分
         BigDecimal deductionIntegral = sumIntegral.divide(new BigDecimal("10"),2);
         iIntegralService.saveOrUpdate(integral);
+        // 返回计算信息
         return CalculateDeductionResult.builder()
                 .deductionAmount(deductionIntegral)
                 .deductionAfterAmount(param.getAmount().subtract(deductionIntegral))
@@ -55,6 +58,7 @@ public class IntegralServiceImpl implements IntegralService {
         Integral integral = iIntegralService.lambdaQuery().eq(Integral::getUser,param.getUser()).last("limit 1").one();
         integral.setLockCode(param.getLockCode());
         integral.setLockNumber(param.getIntegral());
+        // 对积分进行锁定
         integral.setLockStatus("LOCK");
         iIntegralService.updateById(integral);
         IntegralArea integralArea = IntegralArea.builder().build();
@@ -70,6 +74,7 @@ public class IntegralServiceImpl implements IntegralService {
     @Override
     public IntegralArea deductionIntegral(DeductionIntegralParam param) {
         Integral integral = iIntegralService.lambdaQuery().eq(Integral::getLockCode,param.getLockCode()).last("limit 1").one();
+        // 扣除积分
         integral.setIntegralNum(integral.getIntegralNum().subtract(integral.getLockNumber()));
         integral.setLockNumber(BigDecimal.ZERO);
         integral.setLockStatus("LOCK");

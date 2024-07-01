@@ -56,6 +56,7 @@ public class StockServiceImpl implements StockService {
     public StockArea deductStock(DeductStockParam param) {
         Stock stock = iStockService.lambdaQuery().eq(Stock :: getLockCode,param.getLockCode()).last("for update").one();
         Preconditions.checkArgument(Objects.nonNull(stock),"没有找到锁定的库存信息");
+        // 扣减库存
         stock.setGoodNumber(stock.getGoodNumber().subtract(stock.getLockNumber()));
         iStockService.lambdaUpdate()
                 .set(Stock::getGoodNumber,stock.getGoodNumber())
@@ -76,6 +77,7 @@ public class StockServiceImpl implements StockService {
     public StockArea releaseStock(ReleaseStockParam param) {
         Stock stock = iStockService.lambdaQuery().eq(Stock :: getLockCode,param.getLockCode()).last("for update").one();
         Preconditions.checkArgument(Objects.nonNull(stock),"没有找到锁定的库存信息");
+        // 释放锁住的库存
         stock.setLockNumber(BigDecimal.ZERO);
         iStockService.lambdaUpdate()
                 .set(Stock::getLockNumber,stock.getLockNumber())
