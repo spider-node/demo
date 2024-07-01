@@ -3,7 +3,7 @@ server:
 
 spider:
   server:
-    ip: 172.16.169.66
+    ip: localhost
     port: 8081
   worker:
     name: pay

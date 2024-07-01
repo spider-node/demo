@@ -38,7 +38,7 @@
 		<dependency>
 			<groupId>cn.spider-node</groupId>
 			<artifactId>client</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.2.2</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework</groupId>

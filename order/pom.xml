@@ -40,7 +40,7 @@
 		<dependency>
 			<groupId>cn.spider-node</groupId>
 			<artifactId>client</artifactId>
-			<version>1.0.2</version>
+			<version>1.0.2.2</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework</groupId>
@@ -115,11 +115,6 @@
 
 				<exclusion>
 					<groupId>io.vertx</groupId>
-					<artifactId>vertx-grpc</artifactId>
-				</exclusion>
-
-				<exclusion>
-					<groupId>io.vertx</groupId>
 					<artifactId>vertx-web</artifactId>
 				</exclusion>
 
@@ -140,14 +135,6 @@
 
 			</exclusions>
 		</dependency>
-
-		<dependency>
-			<groupId>io.vertx</groupId>
-			<artifactId>vertx-grpc</artifactId>
-			<version>4.3.7</version>
-
-		</dependency>
-
 
 		<dependency>
 			<groupId>io.vertx</groupId>
