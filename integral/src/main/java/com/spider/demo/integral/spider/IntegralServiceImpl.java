@@ -17,7 +17,11 @@ public class IntegralServiceImpl implements IntegralService {
     @Resource
     private IIntegralService iIntegralService;
 
-
+    /**
+     * 计算计费抵扣
+     * @param param 用户与兑换金额
+     * @return
+     */
     @Override
     public CalculateDeductionResult calculateDeduction(CalculateDeductionParam param) {
         Integral integral = iIntegralService.lambdaQuery().eq(Integral::getUser,param.getUser()).last("limit 1").one();
@@ -41,6 +45,11 @@ public class IntegralServiceImpl implements IntegralService {
                 .build();
     }
 
+    /**
+     * 锁积分
+     * @param param 用户与积分数量
+     * @return
+     */
     @Override
     public IntegralArea lockIntegral(LockIntegralParam param) {
         Integral integral = iIntegralService.lambdaQuery().eq(Integral::getUser,param.getUser()).last("limit 1").one();
@@ -53,6 +62,11 @@ public class IntegralServiceImpl implements IntegralService {
         return integralArea;
     }
 
+    /**
+     * 扣除积分
+     * @param param
+     * @return
+     */
     @Override
     public IntegralArea deductionIntegral(DeductionIntegralParam param) {
         Integral integral = iIntegralService.lambdaQuery().eq(Integral::getLockCode,param.getLockCode()).last("limit 1").one();
@@ -66,6 +80,11 @@ public class IntegralServiceImpl implements IntegralService {
         return integralArea;
     }
 
+    /**
+     * 释放积分
+     * @param param
+     * @return
+     */
     @Override
     public IntegralArea releaseIntegral(ReleaseIntegralParam param) {
         Integral integral = iIntegralService.lambdaQuery().eq(Integral::getLockCode,param.getLockCode()).last("limit 1").one();
@@ -78,6 +97,11 @@ public class IntegralServiceImpl implements IntegralService {
         return integralArea;
     }
 
+    /**
+     * 增加积分
+     * @param param
+     * @return
+     */
     @Override
     public IntegralArea addIntegral(AddIntegralParam param) {
         Integral integral = iIntegralService.lambdaQuery().eq(Integral::getUser,param.getUser()).last("limit 1").one();

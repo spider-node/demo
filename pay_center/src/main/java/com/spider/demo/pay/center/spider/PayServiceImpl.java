@@ -18,6 +18,11 @@ public class PayServiceImpl implements PayService {
     @Resource
     private IPayCenterService payCenterService;
 
+    /**
+     * 创建支付中心订单
+     * @param param
+     * @return
+     */
     @Override
     public PayCenterArea createPayCenter(CreatePayOrderParam param) {
         PayCenter payCenter = new PayCenter();
@@ -34,6 +39,11 @@ public class PayServiceImpl implements PayService {
         return payCenterArea;
     }
 
+    /**
+     * 查询执行订单信息
+     * @param param
+     * @return
+     */
     @Override
     public PayCenterArea selectPayCenter(SelectPayCenterParam param) {
         PayCenter payCenter = payCenterService.lambdaQuery().eq(PayCenter::getOtherNo, param.getOtherNo()).one();
@@ -43,6 +53,11 @@ public class PayServiceImpl implements PayService {
         return payCenterArea;
     }
 
+    /**
+     * 发起支付
+     * @param param
+     * @return
+     */
     @Override
     public PayCenterArea pay(PayParam param) {
         PayCenter payCenter = payCenterService.lambdaQuery().eq(PayCenter::getOtherNo, param.getOtherNo()).one();
@@ -56,6 +71,10 @@ public class PayServiceImpl implements PayService {
         return payCenterArea;
     }
 
+    /**
+     * 更新支付状态
+     * @param param
+     */
     @Override
     public void updateStatus(UpdatePayOrderStatusParam param) {
         PayCenter payCenter = payCenterService.lambdaQuery().eq(PayCenter::getOtherNo, param.getOtherNo()).one();

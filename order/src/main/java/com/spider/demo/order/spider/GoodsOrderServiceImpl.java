@@ -19,6 +19,11 @@ public class GoodsOrderServiceImpl implements GoodsOrderService {
     @Resource
     private IGoodsOrderService iGoodsOrderService;
 
+    /**
+     * 创建订单
+     * @param param
+     * @return
+     */
     @Override
     public GoodsOrderArea createOrder(CreateGoodsOrderParam param) {
         GoodsOrder goodsOrder = new GoodsOrder();
@@ -33,6 +38,11 @@ public class GoodsOrderServiceImpl implements GoodsOrderService {
         return goodsOrderArea;
     }
 
+    /**
+     * 更新订单信息
+     * @param param
+     * @return
+     */
     @Override
     public GoodsOrderArea updateOrderInfo(UpdateOrderInfoParam param) {
         iGoodsOrderService.lambdaUpdate()
@@ -45,6 +55,11 @@ public class GoodsOrderServiceImpl implements GoodsOrderService {
         return goodsOrderArea;
     }
 
+    /**
+     * 更新订单抵扣金额
+     * @param param
+     * @return
+     */
     @Override
     public GoodsOrderArea updateDeduction(UpdateDeductionParam param) {
         GoodsOrder goodsOrder = iGoodsOrderService.lambdaQuery().eq(GoodsOrder :: getOrderNo,param.getOrderNo()).one();
