@@ -20,8 +20,8 @@ public class PayServiceImpl implements PayService {
 
     /**
      * 创建支付中心订单
-     * @param param
-     * @return
+     * @param param 创建订单必要信息
+     * @return 支付订单域实体
      */
     @Override
     public PayCenterArea createPayCenter(CreatePayOrderParam param) {
@@ -41,8 +41,8 @@ public class PayServiceImpl implements PayService {
 
     /**
      * 查询执行订单信息
-     * @param param
-     * @return
+     * @param param 三方订单号
+     * @return 支付订单域实体
      */
     @Override
     public PayCenterArea selectPayCenter(SelectPayCenterParam param) {
@@ -56,7 +56,7 @@ public class PayServiceImpl implements PayService {
     /**
      * 发起支付
      * @param param
-     * @return
+     * @return 支付订单域实体
      */
     @Override
     public PayCenterArea pay(PayParam param) {
