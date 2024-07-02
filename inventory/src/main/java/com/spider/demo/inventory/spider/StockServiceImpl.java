@@ -1,15 +1,18 @@
 package com.spider.demo.inventory.spider;
+import com.alibaba.fastjson.JSON;
 import com.google.common.base.Preconditions;
 import com.spider.demo.inventory.entity.Stock;
 import com.spider.demo.inventory.sdk.data.*;
 import com.spider.demo.inventory.sdk.interfaces.StockService;
 import com.spider.demo.inventory.service.IStockService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Slf4j
 @Component("stock_manager")
 public class StockServiceImpl implements StockService {
 
@@ -24,6 +27,7 @@ public class StockServiceImpl implements StockService {
     @Override
     public LockStockRsp lockStock(LockStockParam param) {
         // 获取库存
+        log.info("lock-stock-param {}", JSON.toJSONString(param));
         Stock stock = iStockService.lambdaQuery().eq(Stock :: getGoodCode,param.getGoodsCode()).one();
         if(Objects.isNull(stock)){
             return LockStockRsp.builder().lockStatus(false).remark("没有找到商品库存").build();
@@ -54,6 +58,7 @@ public class StockServiceImpl implements StockService {
      */
     @Override
     public StockArea deductStock(DeductStockParam param) {
+        log.info("deduct-stock-param {}", JSON.toJSONString(param));
         Stock stock = iStockService.lambdaQuery().eq(Stock :: getLockCode,param.getLockCode()).last("for update").one();
         Preconditions.checkArgument(Objects.nonNull(stock),"没有找到锁定的库存信息");
         // 扣减库存
@@ -75,6 +80,7 @@ public class StockServiceImpl implements StockService {
      */
     @Override
     public StockArea releaseStock(ReleaseStockParam param) {
+        log.info("release-stock-param {}", JSON.toJSONString(param));
         Stock stock = iStockService.lambdaQuery().eq(Stock :: getLockCode,param.getLockCode()).last("for update").one();
         Preconditions.checkArgument(Objects.nonNull(stock),"没有找到锁定的库存信息");
         // 释放锁住的库存
